@@ -1,0 +1,10 @@
+.input-form{
+    width: 100%;
+    display: flex;
+}
+
+
+.input-fileds{
+    width: 25%;
+    padding: 5px;
+}
