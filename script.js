@@ -95,5 +95,22 @@ savebutton.addEventListener("click",function(){
     console.log(`His Profile is ${positon_label}`);
     console.log(`His Salary is ${Salary_label}`);
 
+const tableBody=document.getElementById('tableBody');
+const newrow=document.createElement('tr');
+newrow.innerHTML=`<tr><td>${name_value}</td>
+<td>${positon_label}</td>
+<td>${positon_label}</td>
+</tr>`
 
+tableBody.appendChild(newrow);
+console.log(tableBody);
+
+})
+
+
+// Reset Button
+resetButton.addEventListener("click",function(){
+    document.getElementById('emp-name').value='';
+    document.getElementById('emp-profile').textContent=0;
+    document.getElementById('emp-salary').value='';
 })
