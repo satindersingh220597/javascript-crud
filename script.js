@@ -81,6 +81,9 @@ const salary=document.querySelector('#emp-salary');
 const salary_label=document.querySelector('#emp-name-salary');
 
 const savebutton=document.querySelector('#submitButton');
+const deleterow=document.getElementsByClassName('.deleteButton');
+attachdeletebuttonlisner();
+attachEditButtonListeners();
 
 savebutton.addEventListener("click",function(){
    
@@ -99,18 +102,75 @@ const tableBody=document.getElementById('tableBody');
 const newrow=document.createElement('tr');
 newrow.innerHTML=`<tr><td>${name_value}</td>
 <td>${positon_label}</td>
-<td>${positon_label}</td>
-</tr>`
+<td>${Salary_label}</td>
+<td>
+    <div class="buttons">
+        <button type="button" class="btn btn-primary editButton">Edit</button>
+        <button type="button" class="btn btn-danger deleteButton">Delete</button>
+    </div>
+</td>
+</tr>`;
 
 tableBody.appendChild(newrow);
 console.log(tableBody);
-
+attachdeletebuttonlisner();
+attachEditButtonListeners();
 })
+
+function attachEditButtonListeners() {
+    const editButtonsList = document.querySelectorAll(".editButton"); // nodeList - kind array
+  
+    // Attach event listeners to each edit button
+    editButtonsList.forEach((button) => {
+      button.addEventListener("click", function (event) {
+        const row = button.closest("tr"); // Find the closest row
+        console.log(row);
+  
+        const name_value = row.children[0].textContent;
+        const positon_label = row.children[1].textContent;
+        const salary_label = row.children[2].textContent;
+  
+        document.querySelector('#emp-name').value = name_value;
+        document.querySelector('#emp-profile').value = positon_label;
+        document.querySelector('#emp-salary').value = salary_label;
+  
+        row.remove();
+  
+        // console.log(`Employee Name: ${empNameValue}`);
+        // console.log(`Employee Profile: ${profileValue}`);
+        // console.log(`Employee Salary: ${empSalaryValue}`);
+      });
+    });
+  }
+function attachdeletebuttonlisner() {
+const deleterow=document.querySelectorAll('.deleteButton');
+deleterow.forEach(item => {
+    item.addEventListener("click",function(){
+        const row = item.closest("tr");
+        row.remove();
+    });
+    
+});
+}
+
+
+
 
 
 // Reset Button
 resetButton.addEventListener("click",function(){
     document.getElementById('emp-name').value='';
-    document.getElementById('emp-profile').textContent=0;
+    document.getElementById('emp-profile').value='';
     document.getElementById('emp-salary').value='';
 })
+
+
+
+// editButton.addEventListener("click", function() {
+//     Name.value = name_value;
+//     Position.value = positon_label;
+//     Salary.value = salary_label;
+//     newrow.remove();
+// });
+
+
