@@ -113,6 +113,10 @@ newrow.innerHTML=`<tr><td>${name_value}</td>
 
 tableBody.appendChild(newrow);
 console.log(tableBody);
+
+Name.value = '';
+Positon.value = '';
+salary.value = '';
 attachdeletebuttonlisner();
 attachEditButtonListeners();
 })
